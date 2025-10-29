@@ -83,13 +83,18 @@ const Footer = () => {
             <h3 className="font-semibold mb-4 text-foreground">Product</h3>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
-                <Link to="/" className="hover:text-primary transition-colors">
-                  Features
+                <Link to="/how-it-works" className="hover:text-primary transition-colors">
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link to="/" className="hover:text-primary transition-colors">
+                <Link to="/rewards" className="hover:text-primary transition-colors">
                   Rewards
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="hover:text-primary transition-colors">
+                  Pricing
                 </Link>
               </li>
               <li>
@@ -110,23 +115,23 @@ const Footer = () => {
             <h3 className="font-semibold mb-4 text-foreground">Company</h3>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link to="/about" className="hover:text-primary transition-colors">
                   About Us
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="hover:text-primary transition-colors">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary transition-colors">
+                  Contact
+                </Link>
               </li>
               <li>
                 <a href="#" className="hover:text-primary transition-colors">
                   Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Press
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Contact
                 </a>
               </li>
             </ul>

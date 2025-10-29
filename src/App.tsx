@@ -9,6 +9,12 @@ import { pageview } from "@/utils/analytics";
 import Preloader from "@/components/Preloader";
 
 import Index from "./pages/Index";
+import About from "./pages/About";
+import HowItWorks from "./pages/HowItWorks";
+import Rewards from "./pages/Rewards";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import Pricing from "./pages/Pricing";
 import Analytics from "./pages/Analytics";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -51,6 +57,12 @@ const App = () => {
               <AnalyticsTracker />
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/how-it-works" element={<HowItWorks />} />
+                <Route path="/rewards" element={<Rewards />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/pricing" element={<Pricing />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
