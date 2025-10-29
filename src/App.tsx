@@ -33,7 +33,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 2800); // 2s display + 0.8s fade out
 
     return () => clearTimeout(timer);
   }, []);
