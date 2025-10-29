@@ -3,8 +3,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { pageview } from "@/utils/analytics"; // ✅ create this file if not already
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { pageview } from "@/utils/analytics";
+import Preloader from "@/components/Preloader";
 
 import Index from "./pages/Index";
 import Analytics from "./pages/Analytics";
@@ -25,26 +27,41 @@ const AnalyticsTracker = () => {
   return null;
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        {/* ✅ Add tracker here */}
-        <AnalyticsTracker />
+const App = () => {
+  const [loading, setLoading] = useState(true);
 
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <Preloader key="preloader" onComplete={() => setLoading(false)} />
+          ) : (
+            <BrowserRouter>
+              <AnalyticsTracker />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          )}
+        </AnimatePresence>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
