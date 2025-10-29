@@ -31,9 +31,9 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
           }}
         >
           <img
-            src="/Gemini_Generated_Image_q0z864q0z864q0z8.png"
+            src="/kred-logo.png"
             alt="KRED Logo"
-            className="w-32 h-32 object-contain glow-primary"
+            className="w-48 h-48 object-contain glow-primary"
           />
         </motion.div>
         <motion.div
